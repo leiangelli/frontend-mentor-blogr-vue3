@@ -1,0 +1,168 @@
+@use 'functions';
+
+@mixin hover() {
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      @content;
+    }
+  }
+}
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+  $extmods: (
+    eot: '?',
+    svg: '#' + str-replace($name, ' ', '_'),
+  );
+
+  $formats: (
+    otf: 'opentype',
+    ttf: 'truetype',
+  );
+
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + '.' + $extmod)) format(quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    src: $src;
+  }
+}
+
+@mixin position($type, $top: null, $right: null, $bottom: null, $left: null, $extra: null) {
+  @if $extra ==false {
+    position: $type;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+  } @else if $extra == 'important' {
+    position: $type !important;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+  }
+}
+
+@mixin absolute($top: null, $right: null, $bottom: null, $left: null, $extra: false) {
+  @include position(absolute, $top, $right, $bottom, $left, $extra);
+}
+
+@mixin relative($top: null, $right: null, $bottom: null, $left: null, $extra: false) {
+  @include position(relative, $top, $right, $bottom, $left, $extra);
+}
+
+@mixin fixed($top: null, $right: null, $bottom: null, $left: null, $extra: false) {
+  @include position(fixed, $top, $right, $bottom, $left, $extra);
+}
+
+@mixin stroke($stroke, $color) {
+  text-shadow: functions.stroke($stroke, $color);
+
+  /*@supports((text-stroke: #{$stroke}px #{$color}) or (-webkit-text-stroke: #{$stroke}px #{$color})) {
+    color: transparent;
+    -webkit-text-stroke: #{$stroke}px $color;
+    text-stroke: #{$stroke}px $color;
+    text-shadow: none;
+  }*/
+}
+
+@mixin triangle($dir, $width, $color) {
+  @if $dir ==tl or $dir ==lt {
+    @include wh(0, 0);
+    border-style: solid;
+    border-width: $width $width 0 0;
+    border-color: $color transparent transparent transparent;
+    line-height: 0px;
+    _border-color: $color #000 #000 #000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000');
+  }
+
+  @if $dir ==tr or $dir ==rt {
+    @include wh(0, 0);
+    border-style: solid;
+    border-width: $width 0 0 $width;
+    border-color: $color transparent transparent transparent;
+    line-height: 0px;
+    _border-color: $color #000 #000 #000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000');
+  }
+
+  @if $dir ==bl or $dir ==lb {
+    @include wh(0, 0);
+    display: inline-block;
+    border-style: solid;
+    border-width: $width 0 0 $width;
+    border-color: transparent transparent transparent $color;
+    line-height: 0px;
+    _border-color: #000 #000 #000 $color;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000');
+  }
+
+  @if $dir ==br or $dir ==rb {
+    @include wh(0, 0);
+    display: inline-block;
+    border-style: solid;
+    border-width: 0 0 $width $width;
+    border-color: transparent transparent $color transparent;
+    line-height: 0px;
+    _border-color: #000 #000 $color #000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000');
+  }
+
+  @if $dir ==t {
+    @include wh(0, 0);
+    border-bottom: $width solid $color;
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+    _border-color: #000000 #000000 $color #000000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+  } @else if $dir ==b {
+    @include wh(0, 0);
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+    border-top: $width solid $color;
+    _border-color: $color #000000 #000000 #000000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+  } @else if $dir ==r {
+    @include wh(0, 0);
+    border-bottom: $width solid transparent;
+    border-left: $width solid $color;
+    border-top: $width solid transparent;
+    _border-color: #000000 $color #000000 #000000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+  } @else if $dir ==l {
+    @include wh(0, 0);
+    border-bottom: $width solid transparent;
+    border-right: $width solid $color;
+    border-top: $width solid transparent;
+    _border-color: #000000 #000000 #000000 $color;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+  }
+
+  @if $dir ==ri {
+    @include wh(0, 0);
+    border-bottom: $width solid $color;
+    border-left: $width solid transparent;
+    border-top: $width solid $color;
+  }
+
+  @if $dir ==li {
+    @include wh(0, 0);
+    border-bottom: $width solid $color;
+    border-right: $width solid transparent;
+    border-top: $width solid $color;
+  }
+}
+
+@mixin wh($width: null, $height: null) {
+  width: $width;
+  height: $height;
+}

@@ -1,0 +1,65 @@
+@use 'functions';
+
+@mixin mq($breakpoint, $extra: '') {
+  $ext: functions.str-replace($extra, ' ');
+  $extensions: if($ext, functions.str-split($ext, ','), false);
+
+  $query: '';
+
+  $value1: '';
+  $value2: '';
+
+  $type1: '';
+  $type2: '';
+
+  @if length($breakpoint) == 2 {
+    $value1: nth($breakpoint, 1);
+    $value2: nth($breakpoint, 2);
+  } @else {
+    $value1: nth($breakpoint, 1);
+  }
+
+  @if length($extensions) == 2 {
+    $type1: nth($extensions, 1);
+    $type2: nth($extensions, 2);
+  } @else {
+    $type1: nth($extensions, 1);
+  }
+
+  $temp: ('min-width', 'min-height', 'max-width', 'max-height');
+
+  @if (
+      functions.str-contains($temp, $type1) != true or functions.str-contains($temp, $type2) != true
+    ) and
+    length($extensions) ==
+    2
+  {
+    @error 'Invalid breakpoint #{$extra}';
+  }
+
+  @if $value1 and $value2 == '' {
+    @if $type1 == '' or $type1 == 'width' or $type1 == 'min-width' {
+      $query: 'only screen and (min-width: #{$value1})';
+    } @else if $type1 == 'max-width' {
+      $query: 'only screen and (max-width: #{$value1})';
+    } @else if $type1 == 'min-height' {
+      $query: 'only screen and (min-height: #{$value1})';
+    } @else if $type1 == 'max-height' {
+      $query: 'only screen and (max-height: #{$value1})';
+    } @else {
+      @error 'Invalid Breakpoint => #{$type1}';
+    }
+  } @else if $value1 and $value2 {
+    @if $type1 == '' or $type1 == 'width' {
+      $query: 'only screen and (min-width: #{$value1}) and (max-width: #{$value2})';
+    } @else if $type1 == 'height' {
+      $query: 'only screen and (min-height: #{$value1}) and (max-height: #{$value2})';
+    } @else {
+      $query: 'only screen and (#{$type1}: #{$value1}) and (#{$type2}: #{$value2})';
+    }
+  }
+
+  @media #{$query} {
+    @content;
+  }
+}
