@@ -39,15 +39,8 @@
 
       <section class="box__img">
         <img
-          v-if="device.width.value < 992"
-          src="@/assets/illustration-editor-mobile.svg"
-          alt="illustration-editor-mobile"
-        />
-
-        <img
-          v-if="device.width.value > 991"
-          src="@/assets/illustration-editor-desktop.svg"
-          alt="illustration-editor-desktop"
+          :src="getImageUrl(`illustration-editor-${device.type === 'pc' ? 'desktop' : 'mobile'}.svg`)"
+          alt="illustration-editor"
         />
       </section>
 
@@ -77,7 +70,7 @@
     <div class="l-inner">
       <section class="box__img">
         <img
-          src="@/assets/illustration-phones.svg"
+          :src="getImageUrl('illustration-phones.svg')"
           alt="illustration-phones"
         />
       </section>
@@ -98,15 +91,8 @@
     <div class="l-inner">
       <section class="box__img">
         <img
-          v-if="device.width.value < 992"
-          src="@/assets/illustration-laptop-mobile.svg"
-          alt="illustration-laptop-mobile"
-        />
-
-        <img
-          v-if="device.width.value > 991"
-          src="@/assets/illustration-laptop-desktop.svg"
-          alt="illustration-laptop-desktop"
+          :src="getImageUrl(`illustration-laptop-${device.type === 'pc' ? 'desktop' : 'mobile'}.svg`)"
+          alt="illustration-laptop"
         />
       </section>
       
@@ -193,11 +179,7 @@ import { deviceInfo } from './composables/device-info'
 const device = deviceInfo()
 const navFlag = ref<boolean>(false)
 
-const showNavigation = computed(() => {
-  if (device.width.value > 992) {
-    return true
-  }
-  return navFlag.value
-})
-
+const getImageUrl = (name:string) => {
+  return new URL(`./assets/${name}`, import.meta.url).href
+}
 </script>
