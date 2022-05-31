@@ -1,2 +1,23 @@
+@use '../abstracts' as *;
+
 .intro {
+  background: {
+    image: url(assets/bg-pattern-intro-desktop.svg),
+      linear-gradient(to left, var(--gradient-red-200), var(--gradient-red-100));
+    position: 4% 54%;
+    size: 150em, 100%;
+    repeat: no-repeat;
+  }
+  border-bottom-left-radius: 100px;
+  color: var(--white);
+  grid-template-rows: 60px auto auto;
+
+  @include mq(991px, max-width) {
+    background: {
+      image: url(assets/bg-pattern-intro-mobile.svg),
+        linear-gradient(311deg, var(--gradient-red-200), var(--gradient-red-100));
+      size: 83em, 100%;
+      position: 35% 34%;
+    }
+  }
 }

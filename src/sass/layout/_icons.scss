@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+.ico-arrow {
+  background-image: url(assets/icon-arrow-dark.svg);
+  width: 10px;
+  height: 7px;
+  display: block;
+  transition: transform 0.3s ease;
+
+  @include mq(992px) {
+    background-image: url(assets/icon-arrow-light.svg);
+  }
+}

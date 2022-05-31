@@ -1,0 +1,51 @@
+@use '../abstracts' as *;
+
+.btn-default {
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: em(16px);
+  font-weight: bold;
+  padding: 13px 20px;
+  transition: background 0.5s ease;
+
+  &.no-padding {
+    padding: 0;
+  }
+}
+
+.btn-border {
+  border-radius: 40px;
+  border: 1px solid var(--white);
+  cursor: pointer;
+  position: relative;
+  transition: background 0.5s ease;
+
+  &:hover {
+    background-color: var(--cta-bg);
+    color: var(--cta-hover-bg);
+  }
+}
+
+.btn-white {
+  background-color: var(--cta-bg);
+  border-radius: 40px;
+  color: var(--cta-text);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--cta-hover-bg);
+    color: var(--white);
+  }
+}
+
+.btn-signup {
+  @extend .btn-default;
+  @extend .btn-white;
+  width: 140px;
+
+  @include mq(991px, max-width) {
+    background-image: linear-gradient(to left, var(--gradient-red-200), var(--gradient-red-100));
+    color: var(--white);
+  }
+}

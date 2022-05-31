@@ -1,0 +1,35 @@
+@use '../abstracts' as *;
+
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 76px 0 77px;
+  border-top-right-radius: 100px;
+
+  @include mq(992px) {
+    padding: 70px 0 77px;
+  }
+}
+
+.footer-inner {
+  grid-template-columns: 23px 140px 0.8fr 2.3fr 2.3fr 23px;
+}
+
+.footer__logo {
+  grid-column: 2 / span 4;
+
+  @include mq(991px, max-width) {
+    margin-bottom: 80px;
+  }
+
+  @include mq(992px) {
+    grid-column: 2;
+  }
+
+  img {
+    @include mq(991px, max-width) {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}

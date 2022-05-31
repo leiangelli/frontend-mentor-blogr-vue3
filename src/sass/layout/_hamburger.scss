@@ -1,0 +1,43 @@
+@use '../abstracts' as *;
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: auto;
+  min-height: 18px;
+  min-width: 33px;
+
+  @include mq(992px) {
+    display: none;
+  }
+
+  &.is-active {
+    span {
+      &:first-child {
+        transform: rotate(43deg) translate(6px, 2px);
+      }
+
+      &:nth-child(2) {
+        transform: translateX(200%);
+      }
+
+      &:last-child {
+        transform: rotate(-43deg) translate(8px, -6px);
+      }
+    }
+  }
+
+  &.is-hide {
+    opacity: 0;
+  }
+
+  span {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform-origin: center;
+    position: relative;
+    transition: all 0.35s ease;
+  }
+}

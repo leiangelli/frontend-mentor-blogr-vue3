@@ -1,0 +1,68 @@
+@use '../abstracts' as *;
+
+.sitemap {
+  grid-column: 2 / span 4;
+  width: 100%;
+
+  @include mq(992px) {
+    display: grid;
+    gap: 26px;
+    grid-column: 4 / span 2;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 10px;
+  }
+
+  @include mq(991px, max-width) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.sitemap__item {
+  width: 100%;
+
+  &:not(:last-child) {
+    @include mq(991px, max-width) {
+      margin-bottom: 49px;
+    }
+  }
+
+  span {
+    font-weight: bold;
+    display: block;
+    font-size: 15px;
+
+    @include mq(991px, max-width) {
+      text-align: center;
+      font-size: em(18px);
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin-top: 30px;
+    font-size: 15px;
+
+    @include mq(991px, max-width) {
+      font-size: em(19px);
+    }
+
+    li {
+      @include mq(991px, max-width) {
+        text-align: center;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+
+        @include mq(992px) {
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}

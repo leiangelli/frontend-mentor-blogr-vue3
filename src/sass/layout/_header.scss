@@ -1,0 +1,49 @@
+@use '../abstracts' as *;
+
+.header {
+  color: var(--white);
+  padding-top: 56px;
+
+  @include mq(992px) {
+    padding-top: 55px;
+    // margin-top: 60px;
+  }
+}
+
+.header-inner {
+  align-items: center;
+  display: flex;
+  grid-column: 2 / span 2;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.logo {
+  background: {
+    image: url(assets/logo.svg);
+    repeat: no-repeat;
+    size: contain;
+  }
+  width: 81px;
+  height: 33px;
+  margin-right: 67px;
+  text-indent: -999px;
+
+  @include mq(992px) {
+    width: 122px;
+    height: 41px;
+    margin-right: 64px;
+  }
+}
+
+.header__actions {
+  color: hsl(359deg 100% 92%);
+  margin-left: auto;
+
+  button {
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+}

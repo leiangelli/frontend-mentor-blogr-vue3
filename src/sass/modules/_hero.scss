@@ -1,0 +1,57 @@
+@use '../abstracts' as *;
+
+.hero {
+  padding: em(110px) 0 em(156px);
+  place-items: center;
+
+  @include mq(992px) {
+    padding: em(122px) 0 em(156px);
+  }
+
+  h2 {
+    font: {
+      size: em(36px);
+      weight: 500;
+    }
+    grid-column: 2 / span 2;
+    letter-spacing: -0.8px;
+    margin: 0 auto 14px;
+    text-align: center;
+
+    @include mq(991px, max-width) {
+      width: 95%;
+    }
+
+    @include mq(992px) {
+      font-size: em(62px);
+      font-weight: bold;
+      letter-spacing: -2px;
+    }
+  }
+
+  p {
+    font-size: em(17px);
+    grid-column: 2 / span 2;
+    margin-bottom: 49px;
+    text-align: center;
+    letter-spacing: 0.5px;
+
+    @include mq(991px, max-width) {
+      width: 95%;
+    }
+
+    @include mq(992px) {
+      font-size: em(19px);
+    }
+  }
+}
+
+.hero__actions {
+  display: grid;
+  gap: 15px;
+  grid-column: 2 / span 2;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  max-width: 291px;
+  width: 100%;
+}
