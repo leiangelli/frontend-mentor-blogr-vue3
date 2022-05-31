@@ -1,8 +1,5 @@
 <template>
-  <section
-    class="intro"
-    role="banner"
-  >
+  <section class="intro">
     <header class="header l-inner">
       <div class="header-inner">
         <h1 class="logo">
@@ -33,16 +30,16 @@
     <Hero />
   </section>
 
-  <article class="box box-design"> 
+  <div class="box box-design"> 
     <div class="l-inner">
       <h2>Designed for the future</h2>
 
-      <section class="box__img">
+      <figure class="box__img">
         <img
           :src="getImageUrl(`illustration-editor-${device.type === 'pc' ? 'desktop' : 'mobile'}.svg`)"
           alt="illustration-editor"
         />
-      </section>
+      </figure>
 
       <section class="box__desc">
         <h3>
@@ -64,16 +61,16 @@
         </p>
       </section>
     </div>
-  </article>
+  </div>
 
-  <article class="box box-infrastructure">
+  <div class="box box-infrastructure">
     <div class="l-inner">
-      <section class="box__img">
+      <figure class="box__img">
         <img
           :src="getImageUrl('illustration-phones.svg')"
           alt="illustration-phones"
         />
-      </section>
+      </figure>
 
       <section class="box__desc">
         <h2>
@@ -85,16 +82,16 @@
         </p>
       </section>
     </div>
-  </article>
+  </div>
 
-  <article class="box box-laptop">
+  <div class="box box-laptop">
     <div class="l-inner">
-      <section class="box__img">
+      <figure class="box__img">
         <img
           :src="getImageUrl(`illustration-laptop-${device.type === 'pc' ? 'desktop' : 'mobile'}.svg`)"
           alt="illustration-laptop"
         />
-      </section>
+      </figure>
       
       <section class="box__desc">
         <h3>
@@ -116,7 +113,7 @@
         </p>
       </section>
     </div>
-  </article>
+  </div>
 
   <footer class="footer">
     <div class="footer-inner l-inner">

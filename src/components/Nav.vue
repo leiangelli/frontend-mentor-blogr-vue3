@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav" role="navigation">
+  <nav class="nav">
     <ul class="nav-list">
       <li>
         <span class="nav__lbl">
