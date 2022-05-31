@@ -28,7 +28,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/leiangelli/frontend-mentor-blogr-vue3](https://github.com/leiangelli/frontend-mentor-blogr-vue3)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://leiangelli-fem-blogr.netlify.app/](https://leiangelli-fem-blogr.netlify.app/)
 
 ## My process
 
