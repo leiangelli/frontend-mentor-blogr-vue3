@@ -188,7 +188,7 @@ import Nav from "@/components/Nav.vue"
 import Hero from "@/components/Hero.vue"
 
 // composables
-import { deviceInfo } from '@/composables/device-info'
+import { deviceInfo } from './composables/device-info'
 
 const device = deviceInfo()
 const navFlag = ref<boolean>(false)
