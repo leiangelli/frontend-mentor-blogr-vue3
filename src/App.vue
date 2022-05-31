@@ -121,8 +121,8 @@
         <img src="@/assets/logo.svg" alt="logo" />
       </div>
 
-      <section class="sitemap">
-        <section class="sitemap__item">
+      <div class="sitemap">
+        <div class="sitemap__item">
           <span>Product</span>
 
           <ul>
@@ -132,9 +132,9 @@
             <li>Features</li>
             <li>Integrations</li>
           </ul>
-        </section>
+        </div>
 
-        <section class="sitemap__item">
+        <div class="sitemap__item">
           <span>Company</span>
 
           <ul>
@@ -143,9 +143,9 @@
             <li>Blog</li>
             <li>Careers</li>
           </ul>
-        </section>
+        </div>
 
-        <section class="sitemap__item">
+        <div class="sitemap__item">
           <span>Connect</span>
 
           <ul>
@@ -153,8 +153,8 @@
             <li>Newsletter</li>
             <li>LinkedIn</li>
           </ul>
-        </section>
-      </section>
+        </div>
+      </div>
     </div>
   </footer>
 </template>
